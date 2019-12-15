@@ -36,4 +36,14 @@ for page in json_result["videoData"]["pages"]:
         list_con = list_title[1].split("-")
         list_num[0] = "第" + list_num[0] + "讲"
         print("##", list_num[0], list_con[0])
-    print("###", list_title[0], list_title[1])
+    list_con = list_title[1].split("-")
+    del  list_con[0]
+    title = ""
+    title_flag = 0
+    for segment in list_con:
+        if title_flag == 0:
+            title = title + segment
+            title_flag = 1
+            continue
+        title = title + "-" + segment
+    print("###", list_title[0], title)
